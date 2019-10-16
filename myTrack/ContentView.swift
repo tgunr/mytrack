@@ -23,6 +23,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var track: Track
+    var intervalRouter = IntervalRouter()
     
     var addButton: some View {
         return Image(systemName: "plus")
@@ -33,7 +34,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(track.medications) { medication in
-                    NavigationLink(destination: MedicationDetail(medication: medication).environmentObject(self.track)) {
+                    NavigationLink(destination: MedicationDetail(medication: medication, intervalRouter: self.intervalRouter).environmentObject(self.track)) {
                         MedicationRow(medication: medication)
                     }
                 }
@@ -54,7 +55,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static let track = Track()
+    static let intervalRouter = IntervalRouter()
+    
     static var previews: some View {
-        return ContentView().environmentObject(track)
+        return ContentView(intervalRouter: intervalRouter).environmentObject(track)
     }
 }

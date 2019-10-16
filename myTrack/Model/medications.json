@@ -5,9 +5,14 @@
         "startDate": "10/05/19 10:00",
         "quantity": 30,
         "dosage": 1,
-        "atTimes": [ "10/05/19 10:00", "10/05/19 11:00", "10/05/19 12:00" ],
+        "atTimes": [ {
+            "id" : 0, "time" : "10/05/19 10:00",
+            "id" : 1, "time" : "10/05/19 11:00",
+            "id" : 2, "time" : "10/05/19 12:00"
+        }],
         "isAM": true,
         "interval": 2,
+        "intervalType" : 1,
         "notify": true,
         "refill": true,
         "refills": 2,
@@ -19,9 +24,13 @@
         "startDate": "10/06/19 11:00",
         "quantity": 30,
         "dosage": 1,
-        "atTimes": [ "10/05/19 10:00" ],
+        "atTimes": [ {
+            "id" : 0, "time" : "10/05/19 10:00",
+            "id" : 1, "time" : "10/05/19 11:00"
+        }],
         "isAM": true,
         "interval": 3,
+        "intervalType" : 1,
         "notify": true,
         "refill": true,
         "refills": 3,

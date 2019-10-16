@@ -36,6 +36,7 @@
 		7520F928234A57C900248D07 /* MedicationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F927234A57C900248D07 /* MedicationDetail.swift */; };
 		7520F92A234A679300248D07 /* DosageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F929234A679300248D07 /* DosageDetail.swift */; };
 		7520F92C234A8EB800248D07 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F92B234A8EB800248D07 /* UserData.swift */; };
+		7581D1812354FA1400248D07 /* IntervalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581D1802354FA1400248D07 /* IntervalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		7520F929234A679300248D07 /* DosageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DosageDetail.swift; sourceTree = "<group>"; };
 		7520F92B234A8EB800248D07 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7520F92D234BA6DA00248D07 /* myTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTrack.entitlements; sourceTree = "<group>"; };
+		7581D1802354FA1400248D07 /* IntervalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				7520F8A8234A486A00248D07 /* ContentView.swift */,
 				7520F925234A572500248D07 /* MedicationRow.swift */,
 				7520F927234A57C900248D07 /* MedicationDetail.swift */,
+				7581D1802354FA1400248D07 /* IntervalView.swift */,
 				7520F929234A679300248D07 /* DosageDetail.swift */,
 				7520F8AA234A486D00248D07 /* Assets.xcassets */,
 				7520F8AF234A486D00248D07 /* LaunchScreen.storyboard */,
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7520F920234A4D4600248D07 /* Medication.swift in Sources */,
+				7581D1812354FA1400248D07 /* IntervalView.swift in Sources */,
 				7520F924234A4D6A00248D07 /* Helper.swift in Sources */,
 				7520F8A5234A486A00248D07 /* AppDelegate.swift in Sources */,
 				7520F926234A572500248D07 /* MedicationRow.swift in Sources */,
@@ -779,6 +783,7 @@
 				DEVELOPMENT_TEAM = NL3267E99V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = myTrack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -802,6 +807,7 @@
 				DEVELOPMENT_TEAM = NL3267E99V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = myTrack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

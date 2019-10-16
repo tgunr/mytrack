@@ -15,8 +15,10 @@ struct MedicationDetail: View {
     @State private var dosageString          = ""
     @State private var intervalString        = ""
     @State private var timesString           = ""
-    @State private var intervalSetting : Int = 1
+    @State private var intervalType          = ""
     
+    @ObservedObject var intervalRouter: IntervalRouter
+
     var medicationIndex: Int {
         track.medications.firstIndex(where: { $0.id == medication.id })!
     }
@@ -60,20 +62,12 @@ struct MedicationDetail: View {
                 }
                 
                 Section(header: Text("Time")) {
-                    Picker(selection: $intervalSetting, label: Text("Interval")) {
-                        Text("Daily").tag(1)
-                        Text("Hours").tag(2)
+                    //                    IntervalView(medication: $medication, interval: $medication.interval)
+                    if intervalRouter.currentPage == "daily" {
+                        Text("view1")
+                    } else if intervalRouter.currentPage == "page2" {
+                        Text("view2")
                     }
-                    IntervalView(hour: $medication.interval, hourString: $intervalString)
-                    TimesView(times: $medication.atTimes)
-//                    HStack {
-//                        TextField("text", value: $medication.atTimes[0], formatter: timeFormatter)
-//                        TextField("text", value: $medication.atTimes[1], formatter: timeFormatter)
-//                    }
-//                    List(0..<2) { item in
-//                        TextField("text", value: self.$medication.atTimes[item], formatter: self.timeFormatter)
-//                    }
-//                    AMPMView(ampmString: $ampmString)
                 }
                 Section(header: Text("Notifications settings")) {
                     Toggle(isOn: $medication.notify) {
@@ -113,7 +107,7 @@ struct TimeDetailsView: View {
 }
 
 struct TimesView: View {
-    @Binding var times: [String]
+    @Binding var times: [MedTime]
     //    @Binding var timesString: String
      private var time: String
     
@@ -133,43 +127,11 @@ struct TimesView: View {
 //                time = self.$times[index]
 //                DatePicker(time, displayedComponents: .hourAndMinute)
                 TextField("title", value: $times[0], formatter: timeFormatter)
-//                TextField("Time", value: self.times[index], formatter: timeFormatter)
 //                Text(verbatim: "index: \(self.times[index])")
             }
         }
     }
 
-
-
-struct IntervalView: View {
-    @Binding var hour: Int
-    @Binding var hourString: String
-    
-    let range = 1...12
-    
-    var body: some View {
-        let binding = Binding<Int>(
-            get: {
-//                self.hourString = String(self.hour)
-                return self.hour
-        },
-            set: {
-                self.hour = $0
-                self.hourString = String(self.hour)
-        })
-        
-        return Stepper(value: binding, in: range) {
-            if hour > 1 {
-                HStack {
-                    Text(verbatim: "Every")
-                    Text(verbatim: "\(hourString) hours")
-                }
-            } else {
-                Text(verbatim: "hour")
-            }
-        }
-    }
-}
 
 struct DoseageView: View {
     @Binding var doseCount: Int
@@ -222,16 +184,11 @@ struct AMPMView: View {
 
 struct MedicationDetailP: PreviewProvider {
     static let track = Track()
+    static let intervalRouter = IntervalRouter()
+
     static var previews: some View {
-        return MedicationDetail(medication: track.medications[0]).environmentObject(self.track)
+        return MedicationDetail(medication: track.medications[0], intervalRouter: self.intervalRouter).environmentObject(self.track)
     }
 }
 
 
-struct ExtractedView: View {
-    @State var time: Date
-    
-    var body: some View {
-        Text(verbatim: "time")
-    }
-}

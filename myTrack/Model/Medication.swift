@@ -8,6 +8,11 @@
 
 import SwiftUI
 
+struct MedTime: Codable, Equatable, Identifiable {
+    var id: Int
+    var time: String
+}
+
 struct Medication: Codable, Equatable, Identifiable {
     var id: UUID
     var name: String
@@ -15,7 +20,8 @@ struct Medication: Codable, Equatable, Identifiable {
     var quantity: Int
     var dosage: Int
     var isAM: Bool
-    var atTimes: [String]
+    var intervalType: Int
+    var atTimes: [MedTime]
     var interval: Int
     var notify: Bool
     var refill: Bool
