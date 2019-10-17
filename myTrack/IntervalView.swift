@@ -10,7 +10,7 @@ import SwiftUI
 
 struct IntervalView: View {
     @Binding var medication: Medication
-    
+
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
@@ -18,45 +18,35 @@ struct IntervalView: View {
         return formatter
     }
 
-    let range = 1...12
+    let range = 1 ... 12
 
     var body: some View {
         return
             Picker(selection: $medication.intervalType, label: Text("Interval")) {
                 Text("Daily").tag(0)
                 Text("Every").tag(1)
+                Text("As needed").tag(2)
 //                Stepper("Step", value: binding1)
 //                Stepper($medication.atTimes[0], value: range)
 //                TimesView($medication.atTimes)
-        }
+            }
     }
 }
 
 struct IntervalDetailView: View {
-    @Binding var hour: Int
-    @Binding var hourString: String
-    
-    let range = 1...12
-    
+    @Binding var medication: Medication
+
+    let range = 1 ... 12
+
     var body: some View {
-        let binding = Binding<Int>(
-            get: {
-//                self.hourString = String(self.hour)
-                return self.hour
-        },
-            set: {
-                self.hour = $0
-                self.hourString = String(self.hour)
-        })
-        
-        return Stepper(value: binding, in: range) {
-            if hour > 1 {
-                HStack {
-                    Text(verbatim: "Every")
-                    Text(verbatim: "\(hourString) hours")
-                }
+        Group {
+            IntervalView(medication: $medication)
+
+            if medication.intervalType == 0 { // Daily
+                DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("At ") })
             } else {
-                Text(verbatim: "hour")
+                Stepper(value: $medication.interval, in: range, label: { Text("\(medication.interval) Hours") })
+                DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("Starting At ") })
             }
         }
     }

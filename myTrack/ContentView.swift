@@ -20,6 +20,12 @@ import SwiftUI
 //                    .navigationBarItems(leading: Button(action: add, label: { Text("Add") }), trailing: EditButton())
 //            }
 
+struct ModalView: View {
+    var body: some View {
+        Text("This is a modal")
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject private var data: UserData
 
@@ -41,6 +47,11 @@ struct ContentView: View {
             .navigationBarTitle(Text("Prescriptions"))
             .navigationBarItems(leading: Button(action: add, label: { Text("Add") }), trailing: EditButton())
         }
+        .alert(isPresented: $data.permission) {
+            Alert(title:
+                    Text("This application requires notifications in order to be useful. The purpose of the application is to remind you when to take your medications.\nPlease go to the Settings -> Notications -> myTrack and enable notifications ")
+            )
+        }
     }
 
     func add() {
@@ -55,7 +66,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static let data = UserData()
-    static let intervalRouter = IntervalRouter()
 
     static var previews: some View {
         return ContentView().environmentObject(data)

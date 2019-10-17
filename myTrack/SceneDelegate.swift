@@ -13,13 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     var data = UserData.shared
-
-    func setNotification() {
-        let manager = LocalNotificationManager()
-        manager.requestPermission()
-        manager.addNotification(title: "This is a test reminder")
-        manager.schedule()
-    }
+    let manager = LocalNotificationManager.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -29,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
 
         let contentView = ContentView().environmentObject(data)
-        setNotification()
+        manager.requestPermission()
+        manager.createNotifications()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

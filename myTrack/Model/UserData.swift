@@ -40,21 +40,11 @@ func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     }
 }
 
-final class UserDataO: ObservableObject {
-//    @Published var tracks = trackData
-    @Published var medications = Bundle.main.decode([Medication].self, from: "medications.json")
-    @Published var pains = [Pain]()
-    @Published var startDate = Date()
-    @Published var atTimes = 8
-    @Published var frequency = 4
-    @Published var isAM: Bool = true
-}
-
 class UserData: ObservableObject {
     @Published var medications: [Medication] = Bundle.main.decode([Medication].self, from: "medications.json")
     @Published var pains = [Pain]()
     @Published var currentMed: Medication?
-    @Published var permission: Bool = false
+    @Published var permission: Bool = true
     
     static let shared = UserData()
 

@@ -12,24 +12,32 @@ import UserNotifications
 struct Notification {
     var id: String
     var title: String
+    var interval: TimeInterval
+    var repeats: Bool
 }
 
 class LocalNotificationManager {
     var notifications = [Notification]()
-
+    static var shared = LocalNotificationManager()
+    
+    // TODO: Need to recheck permission setting periodically
     func requestPermission() {
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
                 if granted == true && error == nil {
-                    UserData.shared.permission = true
+                    UserData.shared.permission = false
                     self.scheduleNotifications()
                 }
             }
     }
 
     func addNotification(title: String) {
-        notifications.append(Notification(id: UUID().uuidString, title: title))
+        notifications.append(Notification(id: UUID().uuidString, title: title, interval: 30, repeats: false))
+    }
+    
+    func addNotifcation(title: String, interval: TimeInterval, repeating: Bool) {
+        notifications.append(Notification(id: UUID().uuidString, title: title, interval: interval, repeats: repeating))
     }
 
     func scheduleNotifications() {
@@ -37,7 +45,7 @@ class LocalNotificationManager {
             let content = UNMutableNotificationContent()
             content.title = notification.title
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 65, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.interval, repeats: notification.repeats)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
 
             UNUserNotificationCenter.current().add(request) { error in
@@ -60,5 +68,9 @@ class LocalNotificationManager {
                 break
             }
         }
+    }
+    
+    func createNotifications()  {
+        
     }
 }
