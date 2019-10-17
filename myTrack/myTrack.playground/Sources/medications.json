@@ -1,0 +1,39 @@
+[
+    {
+        "id": "340ECD92-13F4-407B-953C-B302CE6DE400",
+        "name": "Med1",
+        "startDate": "10/05/19 10:00",
+        "quantity": 30,
+        "dosage": 1,
+        "atTimes": [ {
+            "id" : 0, "time" : "10/05/19 10:00",
+            "id" : 1, "time" : "10/05/19 11:00",
+            "id" : 2, "time" : "10/05/19 12:00"
+        }],
+        "isAM": true,
+        "interval": 2,
+        "intervalType" : 1,
+        "notify": true,
+        "refill": true,
+        "refills": 2,
+        "instructions": "Take with meal"
+    },
+    {
+        "id": "340ECD92-13F4-407B-953C-B302CE6DE401",
+        "name": "Med2",
+        "startDate": "10/06/19 11:00",
+        "quantity": 30,
+        "dosage": 1,
+        "atTimes": [ {
+            "id" : 0, "time" : "10/05/19 10:00",
+            "id" : 1, "time" : "10/05/19 11:00"
+        }],
+        "isAM": true,
+        "interval": 3,
+        "intervalType" : 1,
+        "notify": true,
+        "refill": true,
+        "refills": 3,
+        "instructions": "Take with meal"
+    }
+]
