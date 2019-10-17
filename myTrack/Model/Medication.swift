@@ -17,6 +17,7 @@ struct Medication: Codable, Equatable, Identifiable {
     var id: UUID
     var name: String
     var startDate: Date
+    var startTime: Date
     var quantity: Int
     var dosage: Int
     var isAM: Bool

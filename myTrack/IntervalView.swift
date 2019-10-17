@@ -10,9 +10,6 @@ import SwiftUI
 
 struct IntervalView: View {
     @Binding var medication: Medication
-    @Binding var intervalRouter: IntervalRouter
-    @State private var interval: Int
-    @State private var intervalString: String
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -24,39 +21,13 @@ struct IntervalView: View {
     let range = 1...12
 
     var body: some View {
-        let binding = Binding<Int>(
-            get: {
-                return self.interval
-        },
-            set: {
-                self.interval = $0
-                self.intervalString = String(self.interval)
-        })
-         
         return
-            Picker(selection: binding, label: Text("Interval")) {
+            Picker(selection: $medication.intervalType, label: Text("Interval")) {
                 Text("Daily").tag(0)
-                Text("At").tag(1)
+                Text("Every").tag(1)
 //                Stepper("Step", value: binding1)
 //                Stepper($medication.atTimes[0], value: range)
 //                TimesView($medication.atTimes)
-                Text("At").tag(3)
-        }
-    }
-}
-
-struct IView: View {
-    @State var selection: Int
-    var body: some View {
-        VStack {
-            TabView(selection: $selection) {
-                Text("Tab 1").tabItem { Text("Daily") }.tag(1)
-                Text("Tab Content 2").tabItem {
-                    Text("Every")
-                    Text("hours")
-                }.tag(2)
-            }
-            Spacer()
         }
     }
 }
@@ -93,10 +64,9 @@ struct IntervalDetailView: View {
 
 struct IntervalView_Previews: PreviewProvider {
     @State private static var track = Track()
-    @State static var intervalRouter = IntervalRouter()
     @State static var med = track.medications[0]
 
     static var previews: some View {
-        IView(selection: med.intervalType)
+        IntervalView(medication: $med)
     }
 }

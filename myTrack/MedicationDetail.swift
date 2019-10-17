@@ -11,14 +11,12 @@ import SwiftUI
 struct MedicationDetail: View {
     @EnvironmentObject var track: Track
     @State var medication: Medication
-    @State private var ampmString            = ""
-    @State private var dosageString          = ""
-    @State private var intervalString        = ""
-    @State private var timesString           = ""
-    @State private var intervalType          = ""
+    @State private var ampmString = ""
+    @State private var dosageString = ""
+    @State private var intervalString = ""
+    @State private var timesString = ""
+    @State private var intervalType = ""
     
-    @ObservedObject var intervalRouter: IntervalRouter
-
     var medicationIndex: Int {
         track.medications.firstIndex(where: { $0.id == medication.id })!
     }
@@ -35,58 +33,60 @@ struct MedicationDetail: View {
         formatter.timeStyle = .short
         return formatter
     }
-
+    
     var body: some View {
-        let stack = VStack {
-            Form {
-                Section(header: Text("Prescription")) {
-                    HStack{
-                        Text("Name:")
-                        TextField("Name", text: $medication.name)
+        //        var times = medication.atTimes
+        //        let sv = Binding<Int> (
+        //            get: { vv },
+        //            set: { vv = $0 }
+        //        )
+        
+        return
+            VStack {
+                Form {
+                    Section(header: Text(verbatim: "Prescription")) {
+                        HStack {
+                            Text(verbatim: "Name:")
+                            TextField("Name", text: $medication.name)
+                        }
+                        HStack {
+                            Text(verbatim: "Quantity:")
+                            TextField("0", value: $medication.quantity, formatter: NumberFormatter())
+                        }
+                        DatePicker(selection: $medication.startDate, in: ...Date(), displayedComponents: .date) {
+                            Text(verbatim: "Filled Date")
+                        }
+                        Stepper(value: $medication.refills, in: 0 ... 10, label: { Text("Refills Left: \(medication.refills)") })
                     }
-                    HStack {
-                        Text("Quantity:")
-                        TextField("0", value: $medication.quantity, formatter: NumberFormatter())
+                    
+                    Section(header: Text(verbatim: "Take")) {
+                        DoseageView(doseCount: $medication.dosage)
                     }
-                    HStack{
-                        Text("Refills Left:")
-                        TextField("0", value: $medication.refills, formatter: NumberFormatter())
+                    
+                    Section(header: Text(verbatim: "Time")) {
+                        IntervalView(medication: $medication)
+                        if medication.intervalType == 0 { // Daily
+                            DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("At ") })
+                        } else {
+                            Stepper(value: $medication.interval, in: 0 ... 12, label: { Text("\(medication.interval) Hours") })
+                            DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("Starting At ") })
+                        }
                     }
-                    DatePicker(selection: $medication.startDate, in: ...Date(), displayedComponents: .date) {
-                        Text("Start Date")
-                    }
+                                Section(header: Text(verbatim: "Notifications settings")) {
+                                    Toggle(isOn: $medication.notify) {
+                                        Text(verbatim: "Notify Me To Take")
+                                    }
+                                    Toggle(isOn: $medication.refill) {
+                                        Text(verbatim: "Notify Me To Refill")
+                                    }
+                                }
                 }
-                
-                Section(header: Text("Take")) {
-                    DoseageView(doseCount: $medication.dosage)
-                }
-                
-                Section(header: Text("Time")) {
-                    //                    IntervalView(medication: $medication, interval: $medication.interval)
-                    if intervalRouter.currentPage == "daily" {
-                        Text("view1")
-                    } else if intervalRouter.currentPage == "page2" {
-                        Text("view2")
-                    }
-                }
-                Section(header: Text("Notifications settings")) {
-                    Toggle(isOn: $medication.notify) {
-                        Text("Notify Me To Take")
-                    }
-                    Toggle(isOn: $medication.refill) {
-                        Text("Notify Me To Refill")
-                    }
-                }
-            }
-            HStack {
                 Button(action: {
                     self.track.save(medication: self.medication)
                 }) {
-                    Text("Save")
+                    Text(verbatim: "Save")
                 }
-            }
         }
-        return stack
     }
 }
 
@@ -97,9 +97,9 @@ struct TimeDetails: Identifiable {
 
 struct TimeDetailsView: View {
     let timeDetails: TimeDetails
-
+    
     var body: some View {
-        HStack{
+        HStack {
             Text("Time:")
             Text(timeDetails.times.description)
         }
@@ -109,7 +109,7 @@ struct TimeDetailsView: View {
 struct TimesView: View {
     @Binding var times: [MedTime]
     //    @Binding var timesString: String
-     private var time: String
+    private var time: String
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -122,22 +122,20 @@ struct TimesView: View {
         //        ScrollView {
         //            List {
         HStack {
-            
             //            ForEach($times, id: \.self, content: { aTime in
-//                time = self.$times[index]
-//                DatePicker(time, displayedComponents: .hourAndMinute)
-                TextField("title", value: $times[0], formatter: timeFormatter)
-//                Text(verbatim: "index: \(self.times[index])")
-            }
+            //                time = self.$times[index]
+            //                DatePicker(time, displayedComponents: .hourAndMinute)
+            TextField("title", value: $times[0], formatter: timeFormatter)
+            //                Text(verbatim: "index: \(self.times[index])")
         }
     }
-
+}
 
 struct DoseageView: View {
     @Binding var doseCount: Int
     @State private var dosageString: String = "1"
     
-    let range = 1...10
+    let range = 1 ... 10
     
     var body: some View {
         let binding = Binding<Int>(
@@ -154,7 +152,6 @@ struct DoseageView: View {
                 } else {
                     Text(verbatim: "\(dosageString) pill")
                 }
-                
         }
     }
 }
@@ -166,7 +163,6 @@ struct AMPMView: View {
     let operators = ["AM", "PM"]
     
     var body: some View {
-        
         let binding = Binding<Int>(
             get: { self.queryType },
             set: {
@@ -185,10 +181,8 @@ struct AMPMView: View {
 struct MedicationDetailP: PreviewProvider {
     static let track = Track()
     static let intervalRouter = IntervalRouter()
-
+    
     static var previews: some View {
-        return MedicationDetail(medication: track.medications[0], intervalRouter: self.intervalRouter).environmentObject(self.track)
+        return MedicationDetail(medication: track.medications[0]).environmentObject(self.track)
     }
 }
-
-

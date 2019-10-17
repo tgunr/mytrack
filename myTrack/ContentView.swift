@@ -34,7 +34,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(track.medications) { medication in
-                    NavigationLink(destination: MedicationDetail(medication: medication, intervalRouter: self.intervalRouter).environmentObject(self.track)) {
+                    NavigationLink(destination: MedicationDetail(medication: medication).environmentObject(self.track)) {
                         MedicationRow(medication: medication)
                     }
                 }
@@ -58,6 +58,6 @@ struct ContentView_Previews: PreviewProvider {
     static let intervalRouter = IntervalRouter()
     
     static var previews: some View {
-        return ContentView(intervalRouter: intervalRouter).environmentObject(track)
+        return ContentView().environmentObject(track)
     }
 }
