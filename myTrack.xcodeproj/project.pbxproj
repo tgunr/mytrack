@@ -27,16 +27,12 @@
 		7520F8EA234A486E00248D07 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F8E9234A486E00248D07 /* ComplicationController.swift */; };
 		7520F8EC234A486F00248D07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7520F8EB234A486F00248D07 /* Assets.xcassets */; };
 		7520F8EF234A486F00248D07 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7520F8EE234A486F00248D07 /* Preview Assets.xcassets */; };
-		7520F91C234A4D2900248D07 /* medications.json in Resources */ = {isa = PBXBuildFile; fileRef = 7520F91B234A4D2900248D07 /* medications.json */; };
-		7520F91E234A4D3900248D07 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F91D234A4D3900248D07 /* Track.swift */; };
-		7520F920234A4D4600248D07 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F91F234A4D4600248D07 /* Medication.swift */; };
-		7520F922234A4D5400248D07 /* Pain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F921234A4D5400248D07 /* Pain.swift */; };
-		7520F924234A4D6A00248D07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F923234A4D6A00248D07 /* Helper.swift */; };
 		7520F926234A572500248D07 /* MedicationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F925234A572500248D07 /* MedicationRow.swift */; };
-		7520F928234A57C900248D07 /* MedicationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F927234A57C900248D07 /* MedicationDetail.swift */; };
 		7520F92A234A679300248D07 /* DosageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F929234A679300248D07 /* DosageDetail.swift */; };
 		7520F92C234A8EB800248D07 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F92B234A8EB800248D07 /* UserData.swift */; };
-		7581D1812354FA1400248D07 /* IntervalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581D1802354FA1400248D07 /* IntervalView.swift */; };
+		75E2E01D23588DAE00248D07 /* myTrackLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 75E2E01B23588DAE00248D07 /* myTrackLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75E2E02223588DDD00248D07 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F92B234A8EB800248D07 /* UserData.swift */; };
+		75E2E0562358A0AC00248D07 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2E0552358A0AC00248D07 /* Track.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,17 +121,15 @@
 		7520F8EE234A486F00248D07 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7520F8F0234A486F00248D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7520F8F1234A486F00248D07 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		7520F91B234A4D2900248D07 /* medications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
-		7520F91D234A4D3900248D07 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		7520F91F234A4D4600248D07 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
-		7520F921234A4D5400248D07 /* Pain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pain.swift; sourceTree = "<group>"; };
-		7520F923234A4D6A00248D07 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		7520F925234A572500248D07 /* MedicationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRow.swift; sourceTree = "<group>"; };
-		7520F927234A57C900248D07 /* MedicationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetail.swift; sourceTree = "<group>"; };
 		7520F929234A679300248D07 /* DosageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DosageDetail.swift; sourceTree = "<group>"; };
 		7520F92B234A8EB800248D07 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7520F92D234BA6DA00248D07 /* myTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTrack.entitlements; sourceTree = "<group>"; };
 		7581D1802354FA1400248D07 /* IntervalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalView.swift; sourceTree = "<group>"; };
+		75E2E01923588DAE00248D07 /* myTrackLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = myTrackLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E2E01B23588DAE00248D07 /* myTrackLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myTrackLib.h; sourceTree = "<group>"; };
+		75E2E01C23588DAE00248D07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75E2E0552358A0AC00248D07 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +161,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75E2E01623588DAE00248D07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -178,6 +179,7 @@
 				7520F8C5234A486D00248D07 /* myTrackUITests */,
 				7520F8CF234A486D00248D07 /* myTrack WatchKit App */,
 				7520F8DE234A486E00248D07 /* myTrack WatchKit Extension */,
+				75E2E01A23588DAE00248D07 /* myTrackLib */,
 				7520F8A2234A486A00248D07 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 				7520F8C2234A486D00248D07 /* myTrackUITests.xctest */,
 				7520F8CB234A486D00248D07 /* myTrack WatchKit App.app */,
 				7520F8DA234A486E00248D07 /* myTrack WatchKit Extension.appex */,
+				75E2E01923588DAE00248D07 /* myTrackLib.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,7 +206,6 @@
 				7520F8A6234A486A00248D07 /* SceneDelegate.swift */,
 				7520F8A8234A486A00248D07 /* ContentView.swift */,
 				7520F925234A572500248D07 /* MedicationRow.swift */,
-				7520F927234A57C900248D07 /* MedicationDetail.swift */,
 				7581D1802354FA1400248D07 /* IntervalView.swift */,
 				7520F929234A679300248D07 /* DosageDetail.swift */,
 				7520F8AA234A486D00248D07 /* Assets.xcassets */,
@@ -278,17 +280,33 @@
 		7520F91A234A4D1000248D07 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7520F91B234A4D2900248D07 /* medications.json */,
-				7520F923234A4D6A00248D07 /* Helper.swift */,
+				75E2E0552358A0AC00248D07 /* Track.swift */,
 				7520F92B234A8EB800248D07 /* UserData.swift */,
-				7520F91D234A4D3900248D07 /* Track.swift */,
-				7520F91F234A4D4600248D07 /* Medication.swift */,
-				7520F921234A4D5400248D07 /* Pain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
+		75E2E01A23588DAE00248D07 /* myTrackLib */ = {
+			isa = PBXGroup;
+			children = (
+				75E2E01B23588DAE00248D07 /* myTrackLib.h */,
+				75E2E01C23588DAE00248D07 /* Info.plist */,
+			);
+			path = myTrackLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		75E2E01423588DAE00248D07 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E2E01D23588DAE00248D07 /* myTrackLib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		7520F8A0234A486A00248D07 /* myTrack */ = {
@@ -380,6 +398,24 @@
 			productReference = 7520F8DA234A486E00248D07 /* myTrack WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		75E2E01823588DAE00248D07 /* myTrackLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75E2E01E23588DAE00248D07 /* Build configuration list for PBXNativeTarget "myTrackLib" */;
+			buildPhases = (
+				75E2E01423588DAE00248D07 /* Headers */,
+				75E2E01523588DAE00248D07 /* Sources */,
+				75E2E01623588DAE00248D07 /* Frameworks */,
+				75E2E01723588DAE00248D07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myTrackLib;
+			productName = myTrackLib;
+			productReference = 75E2E01923588DAE00248D07 /* myTrackLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -407,6 +443,9 @@
 					7520F8D9234A486E00248D07 = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					75E2E01823588DAE00248D07 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 				};
 			};
 			buildConfigurationList = 7520F89C234A486A00248D07 /* Build configuration list for PBXProject "myTrack" */;
@@ -427,6 +466,7 @@
 				7520F8C1234A486D00248D07 /* myTrackUITests */,
 				7520F8CA234A486D00248D07 /* myTrack WatchKit App */,
 				7520F8D9234A486E00248D07 /* myTrack WatchKit Extension */,
+				75E2E01823588DAE00248D07 /* myTrackLib */,
 			);
 		};
 /* End PBXProject section */
@@ -436,7 +476,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7520F91C234A4D2900248D07 /* medications.json in Resources */,
 				7520F8B1234A486D00248D07 /* LaunchScreen.storyboard in Resources */,
 				7520F8AE234A486D00248D07 /* Preview Assets.xcassets in Resources */,
 				7520F8AB234A486D00248D07 /* Assets.xcassets in Resources */,
@@ -475,6 +514,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75E2E01723588DAE00248D07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -482,18 +528,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7520F920234A4D4600248D07 /* Medication.swift in Sources */,
-				7581D1812354FA1400248D07 /* IntervalView.swift in Sources */,
-				7520F924234A4D6A00248D07 /* Helper.swift in Sources */,
+				75E2E0562358A0AC00248D07 /* Track.swift in Sources */,
 				7520F8A5234A486A00248D07 /* AppDelegate.swift in Sources */,
 				7520F926234A572500248D07 /* MedicationRow.swift in Sources */,
 				7520F8A7234A486A00248D07 /* SceneDelegate.swift in Sources */,
 				7520F92C234A8EB800248D07 /* UserData.swift in Sources */,
 				7520F8A9234A486A00248D07 /* ContentView.swift in Sources */,
-				7520F91E234A4D3900248D07 /* Track.swift in Sources */,
 				7520F92A234A679300248D07 /* DosageDetail.swift in Sources */,
-				7520F922234A4D5400248D07 /* Pain.swift in Sources */,
-				7520F928234A57C900248D07 /* MedicationDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +564,14 @@
 				7520F8E4234A486E00248D07 /* ExtensionDelegate.swift in Sources */,
 				7520F8E8234A486E00248D07 /* NotificationView.swift in Sources */,
 				7520F8EA234A486E00248D07 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E2E01523588DAE00248D07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E2E02223588DDD00248D07 /* UserData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +953,62 @@
 			};
 			name = Release;
 		};
+		75E2E01F23588DAE00248D07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NL3267E99V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = myTrackLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.polymicro.myTrackLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		75E2E02023588DAE00248D07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NL3267E99V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = myTrackLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.polymicro.myTrackLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -957,6 +1062,15 @@
 			buildConfigurations = (
 				7520F903234A486F00248D07 /* Debug */,
 				7520F904234A486F00248D07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75E2E01E23588DAE00248D07 /* Build configuration list for PBXNativeTarget "myTrackLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E2E01F23588DAE00248D07 /* Debug */,
+				75E2E02023588DAE00248D07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

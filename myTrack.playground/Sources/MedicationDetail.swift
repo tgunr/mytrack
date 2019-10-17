@@ -17,7 +17,6 @@ struct MedicationDetail: View {
     @State private var timesString           = ""
     @State private var intervalType          = ""
     
-    @ObservedObject var intervalRouter: IntervalRouter
 
     var medicationIndex: Int {
         track.medications.firstIndex(where: { $0.id == medication.id })!
@@ -61,14 +60,10 @@ struct MedicationDetail: View {
                     DoseageView(doseCount: $medication.dosage)
                 }
                 
-                Section(header: Text("Time")) {
-                    //                    IntervalView(medication: $medication, interval: $medication.interval)
-                    if intervalRouter.currentPage == "daily" {
-                        Text("view1")
-                    } else if intervalRouter.currentPage == "page2" {
-                        Text("view2")
-                    }
-                }
+//                Section(header: Text("Time")) {
+//                    IntervalView(medication: medication)
+//                }
+
                 Section(header: Text("Notifications settings")) {
                     Toggle(isOn: $medication.notify) {
                         Text("Notify Me To Take")
@@ -135,7 +130,7 @@ struct TimesView: View {
 
 struct DoseageView: View {
     @Binding var doseCount: Int
-    @State private var dosageString: String = "1"
+    @State private var dosageString: String
     
     let range = 1...10
     
@@ -147,8 +142,9 @@ struct DoseageView: View {
                 self.dosageString = String(self.doseCount)
         })
         
+        self.dosageString = String(self.doseCount)
         return
-            Stepper(value: binding, in: range) {
+            Stepper(value: $doseCount, in: range) {
                 if doseCount > 1 {
                     Text(verbatim: "\(dosageString) pills")
                 } else {
@@ -187,8 +183,39 @@ struct MedicationDetailP: PreviewProvider {
     static let intervalRouter = IntervalRouter()
 
     static var previews: some View {
-        return MedicationDetail(medication: track.medications[0], intervalRouter: self.intervalRouter).environmentObject(self.track)
+        return MedicationDetail(medication: track.medications[0]).environmentObject(self.track)
     }
 }
 
 
+
+struct IntervalView: View {
+    @State var medication: Medication
+    @State private var selection: Int = 0
+
+    var body: some View {
+        let binding = Binding<Int>(
+            get: { self.selection },
+            set: {
+                self.selection = $0
+                self.medication.intervalType = $0
+        })
+
+        return VStack {
+                Picker(selection: binding, label: Text("Interval")) {
+                Text(verbatim: "Daily At").tag(0)
+                Text(verbatim: "Daily AM").tag(1)
+                Text(verbatim: "Daily PM").tag(2)
+                Text(verbatim: "Hours").tag(3)
+                //                Stepper("Step", value: binding1)
+                //                Stepper($medication.atTimes[0], value: range)
+                //                TimesView($medication.atTimes)
+            }
+            // This makes Xcode explode when compiling preview
+//          if $medication.intervalType == 0 {
+            if self.selection == 0 {
+                Text(verbatim: "TIME")
+            }
+        }
+    }
+}

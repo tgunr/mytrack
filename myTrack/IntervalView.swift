@@ -8,12 +8,9 @@
 
 import SwiftUI
 
-struct IntervalView: View {
+struct IntervalView1: View {
     @Binding var medication: Medication
-    @Binding var intervalRouter: IntervalRouter
-    @State private var interval: Int
-    @State private var intervalString: String
-    
+
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
@@ -21,42 +18,28 @@ struct IntervalView: View {
         return formatter
     }
 
-    let range = 1...12
+    let range = 1 ... 12
 
     var body: some View {
         let binding = Binding<Int>(
             get: {
-                return self.interval
-        },
+                self.medication.interval
+            },
             set: {
-                self.interval = $0
-                self.intervalString = String(self.interval)
+                self.medication.interval = $0
         })
-         
-        return
-            Picker(selection: binding, label: Text("Interval")) {
-                Text("Daily").tag(0)
-                Text("At").tag(1)
-//                Stepper("Step", value: binding1)
-//                Stepper($medication.atTimes[0], value: range)
-//                TimesView($medication.atTimes)
-                Text("At").tag(3)
-        }
-    }
-}
 
-struct IView: View {
-    @State var selection: Int
-    var body: some View {
-        VStack {
-            TabView(selection: $selection) {
-                Text("Tab 1").tabItem { Text("Daily") }.tag(1)
-                Text("Tab Content 2").tabItem {
-                    Text("Every")
-                    Text("hours")
-                }.tag(2)
-            }
-            Spacer()
+        return
+            VStack {
+                Picker(selection: binding, label: Text("Interval")) {
+                    Text("Daily").tag(0)
+                    Text("At").tag(1)
+                    //                Stepper("Step", value: binding1)
+                    //                Stepper($medication.atTimes[0], value: range)
+                    //                TimesView($medication.atTimes)
+                    Text("At").tag(3)
+                }
+                Spacer()
         }
     }
 }
@@ -64,20 +47,20 @@ struct IView: View {
 struct IntervalDetailView: View {
     @Binding var hour: Int
     @Binding var hourString: String
-    
-    let range = 1...12
-    
+
+    let range = 1 ... 12
+
     var body: some View {
         let binding = Binding<Int>(
             get: {
-//                self.hourString = String(self.hour)
-                return self.hour
-        },
+                //                self.hourString = String(self.hour)
+                self.hour
+            },
             set: {
                 self.hour = $0
                 self.hourString = String(self.hour)
         })
-        
+
         return Stepper(value: binding, in: range) {
             if hour > 1 {
                 HStack {
@@ -94,9 +77,10 @@ struct IntervalDetailView: View {
 struct IntervalView_Previews: PreviewProvider {
     @State private static var track = Track()
     @State static var intervalRouter = IntervalRouter()
-    @State static var med = track.medications[0]
+    var med = track.medications[0]
 
     static var previews: some View {
-        IView(selection: med.intervalType)
+        let binding = Binding.constant(track.medications[0])
+        return IntervalView1(medication: binding).environmentObject(track)
     }
 }
