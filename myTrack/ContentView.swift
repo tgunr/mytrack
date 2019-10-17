@@ -15,7 +15,6 @@ import SwiftUI
 //                            }
 //                        }
 //                        }
-//                        .onDelete(perform: delete)
 //                    }
 //                    .navigationBarTitle(Text("Medications"))
 //                    .navigationBarItems(leading: Button(action: add, label: { Text("Add") }), trailing: EditButton())
@@ -31,26 +30,29 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
+      return      NavigationView {
             List {
                 ForEach(track.medications) { medication in
                     NavigationLink(destination: MedicationDetail(medication: medication).environmentObject(self.track)) {
                         MedicationRow(medication: medication)
                     }
                 }
+                .onDelete(perform: delete)
             }
-            .navigationBarTitle(Text("Meds"))
+            .navigationBarTitle(Text("Prescriptions"))
+            .navigationBarItems(leading: Button(action: add, label: { Text("Add") }), trailing: EditButton())
         }
         
-//        func add() {
-//            let newmed = Medication(id: UUID(), name: "Name", startDate: Date(), quantity: 0, dosage: 0, isAM: true, atTimes: ["0800"], interval: 0, notify: false, refill: false, instructions: "")
-//            track.medications.append(newmed)
-//        }
-//
-//        func delete(at offsets: IndexSet) {
-//            track.medications.remove(atOffsets: offsets)
-//        }
     }
+        func add() {
+            let newmed = Medication(id: UUID(), name: "Name", startDate: Date(), startTime: Date(), quantity: 0, dosage: 0, isAM: true, intervalType: 0, atTimes: [MedTime(id: 0, time: "0800")], interval: 0, notify: false, refill: false, refills: 0, instructions: "")
+            track.medications.append(newmed)
+        }
+
+        func delete(at offsets: IndexSet) {
+            track.medications.remove(atOffsets: offsets)
+        }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
