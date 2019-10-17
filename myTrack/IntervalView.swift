@@ -63,7 +63,7 @@ struct IntervalDetailView: View {
 }
 
 struct IntervalView_Previews: PreviewProvider {
-    @State private static var track = Track()
+    @State private static var track = UserData()
     @State static var med = track.medications[0]
 
     static var previews: some View {

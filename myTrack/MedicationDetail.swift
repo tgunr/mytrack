@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MedicationDetail: View {
-    @EnvironmentObject var track: Track
+    @EnvironmentObject var track: UserData
     @State var medication: Medication
     @State private var ampmString = ""
     @State private var dosageString = ""
@@ -179,7 +179,7 @@ struct AMPMView: View {
 }
 
 struct MedicationDetailP: PreviewProvider {
-    static let track = Track()
+    static let track = UserData()
     static let intervalRouter = IntervalRouter()
     
     static var previews: some View {

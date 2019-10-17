@@ -37,6 +37,7 @@
 		7520F92A234A679300248D07 /* DosageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F929234A679300248D07 /* DosageDetail.swift */; };
 		7520F92C234A8EB800248D07 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520F92B234A8EB800248D07 /* UserData.swift */; };
 		7581D1812354FA1400248D07 /* IntervalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581D1802354FA1400248D07 /* IntervalView.swift */; };
+		75E2E0582358D42700248D07 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2E0572358D42700248D07 /* LocalNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		7520F92B234A8EB800248D07 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7520F92D234BA6DA00248D07 /* myTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTrack.entitlements; sourceTree = "<group>"; };
 		7581D1802354FA1400248D07 /* IntervalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalView.swift; sourceTree = "<group>"; };
+		75E2E0572358D42700248D07 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				7520F91A234A4D1000248D07 /* Model */,
 				7520F8A4234A486A00248D07 /* AppDelegate.swift */,
 				7520F8A6234A486A00248D07 /* SceneDelegate.swift */,
+				75E2E0572358D42700248D07 /* LocalNotification.swift */,
 				7520F8A8234A486A00248D07 /* ContentView.swift */,
 				7520F925234A572500248D07 /* MedicationRow.swift */,
 				7520F927234A57C900248D07 /* MedicationDetail.swift */,
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7520F920234A4D4600248D07 /* Medication.swift in Sources */,
+				75E2E0582358D42700248D07 /* LocalNotification.swift in Sources */,
 				7581D1812354FA1400248D07 /* IntervalView.swift in Sources */,
 				7520F924234A4D6A00248D07 /* Helper.swift in Sources */,
 				7520F8A5234A486A00248D07 /* AppDelegate.swift in Sources */,
@@ -626,6 +630,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=250";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -679,6 +684,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=250";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

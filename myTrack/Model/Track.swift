@@ -23,17 +23,6 @@ enum TrackType: Int, Codable {
     }
 }
 
-class Track: ObservableObject {
-    @Published var medications: [Medication] = Bundle.main.decode([Medication].self, from: "medications.json")
-    @Published var pains = [Pain]()
-    @Published var currentMed: Medication?
-    
-    func save(medication: Medication) {
-        let medindex = medications.firstIndex(where: {$0.id ==  medication.id})
-        medications[medindex!] = medication
-    }
-}
-
 class IntervalRouter: ObservableObject {
     let objectWillChange = PassthroughSubject<IntervalRouter,Never>()
     var currentPage: String = "daily" {
