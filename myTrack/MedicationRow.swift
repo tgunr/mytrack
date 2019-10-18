@@ -8,14 +8,6 @@
 
 import SwiftUI
 
-struct MedicationRow: View {
-    var medication: Medication
-    
-    var body: some View {
-        Text("\(medication.name)")
-    }
-}
-
 struct MedicationRowP: PreviewProvider {
     static var previews: some View {
         Group {
@@ -26,3 +18,10 @@ struct MedicationRowP: PreviewProvider {
     }
 }
 
+struct MedicationRow: View {
+    var medication: Medication
+
+    var body: some View {
+        Text("\(medication.name)")
+    }
+}

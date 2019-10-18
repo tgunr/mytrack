@@ -8,19 +8,28 @@
 
 import SwiftUI
 
+struct DosageDetail_Previews: PreviewProvider {
+    @State private static var track = UserData()
+    @State static var medication = track.medications[1]
+
+    static var previews: some View {
+        return DosageDetail(medication: $medication)
+    }
+}
+
 struct DosageDetail: View {
     @Binding var medication: Medication
-    
+
     var body: some View {
-        let doesStr = "\($medication.dosage)"
-        let name = "\($medication.name)"
-        
-        let stack = VStack {
-            Text("Dosage for \(name)")
+        let doesStr = "\(medication.dosage)"
+        let name = "\(medication.name)"
+
+        return VStack {
+            Text(verbatim: "Dosage for \(name)")
             Form {
                 Section(header: Text("Take")) {
                     HStack {
-                        Stepper(value: $medication.dosage, in: 1...10) {
+                        Stepper(value: $medication.dosage, in: 1 ... 10) {
                             Text("\(doesStr) pill")
                         }
                     }
@@ -31,37 +40,15 @@ struct DosageDetail: View {
                         Text("Day").tag(1)
                         Text("Hours").tag(2)
                     }
-                    Stepper(value: $medication.dosage, in: 1...10) {
+                    Stepper(value: $medication.dosage, in: 1 ... 10) {
                         Text("At")
                     }
-                    
+
                     Toggle(isOn: $medication.isAM) {
                         Text("PM")
                     }
                 }
-                
-                //                Button(action: {
-                //                    do {
-                //                        try self.medication.save(CoreDataManager.shared.mainContext)
-                //
-                //                    } catch {
-                //                        print("Save failed")
-                //                    }
-                //                }) {
-                //                    Text("Save")
-                //                }
             }
         }
-        return stack
     }
 }
-    
-    
-//struct DosageDetail_Previews: PreviewProvider {
-//    static let track = Track()
-//    static var previews: some View {
-//        let medication = track.medications[0]
-//        return DosageDetail(medication: medication)
-//    }
-//}
-
