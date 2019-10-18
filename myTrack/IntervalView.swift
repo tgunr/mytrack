@@ -8,6 +8,18 @@
 
 import SwiftUI
 
+struct IntervalView_Previews: PreviewProvider {
+    @State private static var track = UserData()
+    @State static var med = track.medications[2]
+
+    static var previews: some View {
+        VStack {
+            IntervalView(medication: $med)
+            IntervalSubView(medication: $med)
+        }
+    }
+}
+
 struct IntervalView: View {
     @Binding var medication: Medication
 
@@ -18,45 +30,56 @@ struct IntervalView: View {
         return formatter
     }
 
-    let range = 1 ... 12
-
     var body: some View {
         return
             Picker(selection: $medication.intervalType, label: Text("Interval")) {
                 Text("Daily").tag(0)
                 Text("Every").tag(1)
                 Text("As needed").tag(2)
-//                Stepper("Step", value: binding1)
-//                Stepper($medication.atTimes[0], value: range)
-//                TimesView($medication.atTimes)
             }
     }
 }
 
-struct IntervalDetailView: View {
+struct IntervalSubView: View {
     @Binding var medication: Medication
 
-    let range = 1 ... 12
-
     var body: some View {
-        Group {
-            IntervalView(medication: $medication)
-
-            if medication.intervalType == 0 { // Daily
-                DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("At ") })
-            } else {
-                Stepper(value: $medication.interval, in: range, label: { Text("\(medication.interval) Hours") })
-                DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("Starting At ") })
+        // Expression too complex break out
+        let intType = medication.intervalType
+        return Group {
+            if intType == 0 { // Daily
+                IntervalDailyView(medication: $medication)
+            }
+            if intType == 1 { // Every
+                IntervalEveryView(medication: $medication)
+            }
+            if intType == 2 { // As needed
+                EmptyView()
             }
         }
     }
 }
 
-struct IntervalView_Previews: PreviewProvider {
-    @State private static var track = UserData()
-    @State static var med = track.medications[0]
+struct IntervalEveryView: View {
+    @Binding var medication: Medication
 
-    static var previews: some View {
-        IntervalView(medication: $med)
+    var body: some View {
+        let range = 1 ... 12
+        let intervalB = $medication.interval
+        let interval = medication.interval
+        let everyLabel = Text("\(interval) Hours")
+        return Group {
+            Stepper(value: intervalB, in: range, label: { everyLabel })
+            DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("Starting At ") })
+        }
+    }
+}
+
+struct IntervalDailyView: View {
+    @Binding var medication: Medication
+    var body: some View {
+        let st = $medication.startTime
+        let atLabel = Text("At ")
+       return DatePicker(selection: st, displayedComponents: .hourAndMinute, label: { atLabel })
     }
 }

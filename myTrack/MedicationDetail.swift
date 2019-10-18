@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+struct MedicationDetailP: PreviewProvider {
+    static let data = UserData()
+
+    static var previews: some View {
+        return MedicationDetail(medication: data.medications[2]).environmentObject(self.data)
+    }
+}
+
 struct MedicationDetail: View {
     @EnvironmentObject var track: UserData
     @State var medication: Medication
@@ -16,31 +24,25 @@ struct MedicationDetail: View {
     @State private var intervalString = ""
     @State private var timesString = ""
     @State private var intervalType = ""
-    
+
     var medicationIndex: Int {
         track.medications.firstIndex(where: { $0.id == medication.id })!
     }
-    
+
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
     }
-    
+
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter
     }
-    
+
     var body: some View {
-        //        var times = medication.atTimes
-        //        let sv = Binding<Int> (
-        //            get: { vv },
-        //            set: { vv = $0 }
-        //        )
-        
         return
             VStack {
                 Form {
@@ -58,35 +60,33 @@ struct MedicationDetail: View {
                         }
                         Stepper(value: $medication.refills, in: 0 ... 10, label: { Text("Refills Left: \(medication.refills)") })
                     }
-                    
+
                     Section(header: Text(verbatim: "Take")) {
                         DoseageView(doseCount: $medication.dosage)
                     }
-                    
-                    Section(header: Text(verbatim: "Time")) {
+                    Section {
                         IntervalView(medication: $medication)
-                        if medication.intervalType == 0 { // Daily
-                            DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("At ") })
+                        IntervalSubView(medication: $medication)
+                    }
+                    Section(header: Text(verbatim: "Notifications settings")) {
+                        if medication.notify == true {
+                            Toggle(isOn: $medication.notify) {
+                                Text(verbatim: "Notify Me To Take")
+                            }
                         } else {
-                            Stepper(value: $medication.interval, in: 0 ... 12, label: { Text("\(medication.interval) Hours") })
-                            DatePicker(selection: $medication.startTime, displayedComponents: .hourAndMinute, label: { Text("Starting At ") })
+                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
+                        }
+                        Toggle(isOn: $medication.refill) {
+                            Text(verbatim: "Notify Me To Refill")
                         }
                     }
-                                Section(header: Text(verbatim: "Notifications settings")) {
-                                    Toggle(isOn: $medication.notify) {
-                                        Text(verbatim: "Notify Me To Take")
-                                    }
-                                    Toggle(isOn: $medication.refill) {
-                                        Text(verbatim: "Notify Me To Refill")
-                                    }
-                                }
                 }
                 Button(action: {
                     self.track.save(medication: self.medication)
                 }) {
                     Text(verbatim: "Save")
                 }
-        }
+            }
     }
 }
 
@@ -97,7 +97,7 @@ struct TimeDetails: Identifiable {
 
 struct TimeDetailsView: View {
     let timeDetails: TimeDetails
-    
+
     var body: some View {
         HStack {
             Text("Time:")
@@ -110,14 +110,14 @@ struct TimesView: View {
     @Binding var times: [MedTime]
     //    @Binding var timesString: String
     private var time: String
-    
+
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter
     }
-    
+
     var body: some View {
         //        ScrollView {
         //            List {
@@ -134,9 +134,9 @@ struct TimesView: View {
 struct DoseageView: View {
     @Binding var doseCount: Int
     @State private var dosageString: String = "1"
-    
+
     let range = 1 ... 10
-    
+
     var body: some View {
         let binding = Binding<Int>(
             get: { self.doseCount },
@@ -144,7 +144,7 @@ struct DoseageView: View {
                 self.doseCount = $0
                 self.dosageString = String(self.doseCount)
         })
-        
+
         return
             Stepper(value: binding, in: range) {
                 if doseCount > 1 {
@@ -152,16 +152,16 @@ struct DoseageView: View {
                 } else {
                     Text(verbatim: "\(dosageString) pill")
                 }
-        }
+            }
     }
 }
 
 struct AMPMView: View {
     @Binding var ampmString: String
     @State private var queryType: Int = 0
-    
+
     let operators = ["AM", "PM"]
-    
+
     var body: some View {
         let binding = Binding<Int>(
             get: { self.queryType },
@@ -169,20 +169,11 @@ struct AMPMView: View {
                 self.queryType = $0
                 self.ampmString = self.operators[self.queryType]
         })
-        
+
         return Picker(selection: binding, label: Text("Query")) {
             ForEach(operators.indices) { index in
                 Text(self.operators[index]).tag(index)
             }
         }.pickerStyle(SegmentedPickerStyle())
-    }
-}
-
-struct MedicationDetailP: PreviewProvider {
-    static let track = UserData()
-    static let intervalRouter = IntervalRouter()
-    
-    static var previews: some View {
-        return MedicationDetail(medication: track.medications[0]).environmentObject(self.track)
     }
 }
