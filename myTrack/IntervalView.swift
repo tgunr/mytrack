@@ -10,12 +10,12 @@ import SwiftUI
 
 struct IntervalView_Previews: PreviewProvider {
     @State private static var track = UserData()
-    @State static var med = track.medications[2]
+    @State static var medication = track.medications[1]
 
     static var previews: some View {
         VStack {
-            IntervalView(medication: $med)
-            IntervalSubView(medication: $med)
+            IntervalView(medication: $medication)
+            IntervalSubView(medication: $medication)
         }
     }
 }
@@ -54,7 +54,7 @@ struct IntervalSubView: View {
                 IntervalEveryView(medication: $medication)
             }
             if intType == 2 { // As needed
-                EmptyView()
+                AsNeededView(medication: $medication)
             }
         }
     }
@@ -80,6 +80,14 @@ struct IntervalDailyView: View {
     var body: some View {
         let st = $medication.startTime
         let atLabel = Text("At ")
-       return DatePicker(selection: st, displayedComponents: .hourAndMinute, label: { atLabel })
+        return DatePicker(selection: st, displayedComponents: .hourAndMinute, label: { atLabel })
+    }
+}
+
+struct AsNeededView: View {
+    @Binding var medication: Medication
+    var body: some View {
+        medication.disableNotification()
+        return EmptyView()
     }
 }

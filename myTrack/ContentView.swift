@@ -8,17 +8,13 @@
 
 import SwiftUI
 
-//            Section {
-//                        self.track.currentMed = medication
-//                        MedicationRow(medication: medication).environmentObject(self.track)
-//                        HStack {
-//                            }
-//                        }
-//                        }
-//                    }
-//                    .navigationBarTitle(Text("Medications"))
-//                    .navigationBarItems(leading: Button(action: add, label: { Text("Add") }), trailing: EditButton())
-//            }
+struct ContentView_Previews: PreviewProvider {
+    static let data = UserData()
+
+    static var previews: some View {
+        return ContentView().environmentObject(data)
+    }
+}
 
 struct ModalView: View {
     var body: some View {
@@ -64,10 +60,3 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static let data = UserData()
-
-    static var previews: some View {
-        return ContentView().environmentObject(data)
-    }
-}

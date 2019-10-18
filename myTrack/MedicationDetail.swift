@@ -69,7 +69,7 @@ struct MedicationDetail: View {
                         IntervalSubView(medication: $medication)
                     }
                     Section(header: Text(verbatim: "Notifications settings")) {
-                        if medication.notify == true {
+                        if medication.intervalType != 2 {
                             Toggle(isOn: $medication.notify) {
                                 Text(verbatim: "Notify Me To Take")
                             }

@@ -28,5 +28,9 @@ struct Medication: Codable, Equatable, Identifiable {
     var refill: Bool
     var refills: Int
     var instructions: String
+    
+    mutating func disableNotification() {
+        notify = false
+    }
 }
 
