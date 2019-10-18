@@ -13,7 +13,7 @@
                       }],
         "isAM" : true,
         "interval" : 2,
-        "intervalType" : 0,
+        "intervalType" : 1,
         "notify" : true,
         "refill" : true,
         "refills" : 2,
@@ -22,6 +22,25 @@
     {
         "id" : "340ECD92-13F4-407B-953C-B302CE6DE401",
         "name" : "Med2",
+        "startDate" : "10/06/19 10:00",
+        "startTime" : "10/05/19 08:00",
+        "quantity" : 30,
+        "dosage" : 2,
+        "atTimes" : [ {
+                          "id" : 0, "time" : "10/05/19 10:00",
+                          "id" : 1, "time" : "10/05/19 11:00"
+                      }],
+        "isAM" : true,
+        "interval" : 3,
+        "intervalType" : 1,
+        "notify" : true,
+        "refill" : true,
+        "refills" : 3,
+        "instructions" : "Take with meal"
+    },
+    {
+        "id" : "F5E413ED-076C-4B54-BE17-B302CE6DE402",
+        "name" : "Med3",
         "startDate" : "10/06/19 11:00",
         "startTime" : "10/05/19 08:00",
         "quantity" : 30,
@@ -39,10 +58,29 @@
         "instructions" : "Take with meal"
     },
     {
-        "id" : "340ECD92-13F4-407B-953C-B302CE6DE402",
-        "name" : "Med3",
-        "startDate" : "10/05/19 10:00",
+        "id" : "F5E413ED-076C-4B54-BE17-B302CE6DE421",
+        "name" : "Med4",
+        "startDate" : "10/06/19 11:00",
         "startTime" : "10/05/19 08:00",
+        "quantity" : 30,
+        "dosage" : 1,
+        "atTimes" : [ {
+                          "id" : 0, "time" : "10/05/19 10:00",
+                          "id" : 1, "time" : "10/05/19 11:00"
+                      }],
+        "isAM" : true,
+        "interval" : 3,
+        "intervalType" : 1,
+        "notify" : true,
+        "refill" : true,
+        "refills" : 3,
+        "instructions" : "Take with meal"
+    },
+    {
+        "id" : "340ECD92-13F4-407B-953C-B302CE6DE403",
+        "name" : "Med5",
+        "startDate" : "10/05/19 10:00",
+        "startTime" : "10/05/19 10:00",
         "quantity" : 30,
         "dosage" : 1,
         "atTimes" : [ {
